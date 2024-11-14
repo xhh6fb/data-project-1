@@ -11,7 +11,7 @@ import os
 api = FastAPI()
 
 from fastapi.middleware.cors import CORSMiddleware
-app.add_middleware(
+api.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_methods=["*"],
@@ -20,7 +20,7 @@ app.add_middleware(
 
 @api.get("/")  # zone apex
 def zone_apex():
-    return {"Hello": "Hello API"}
+    return {"Hello!": "Hello API"}
 
 @api.get("/add/{a}/{b}")
 def add_numbers(a: int, b: int):
