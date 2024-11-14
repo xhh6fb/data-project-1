@@ -38,9 +38,7 @@ def get_genres():
             json_data.append(dict(zip(headers,result)))
         return(json_data)
     except Error as e:
-        print("MySQL Error: ", str(e))
-        return None
-    cur.close()
+        return{"MySQL Error: " + str(e)}
 
 @app.get('/songs')
 def get_songs():
@@ -70,9 +68,7 @@ def get_songs():
         
         return json_data
     except Error as e:
-        print("MySQL Error: ", str(e))
-        return None
-    cur.close()
+        return{"MySQL Error: " + str(e)}
 
 DBHOST = "ds2022.cqee4iwdcaph.us-east-1.rds.amazonaws.com"
 DBUSER = "admin"
