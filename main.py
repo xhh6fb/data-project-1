@@ -8,25 +8,25 @@ import json
 import mysql.connector
 import os
 
-api = FastAPI()
+app = FastAPI()
 
 from fastapi.middleware.cors import CORSMiddleware
-api.add_middleware(
+app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-@api.get("/")  # zone apex
+@app.get("/")  # zone apex
 def zone_apex():
     return {"Hello!": "Hello API"}
 
-@api.get("/add/{a}/{b}")
+@app.get("/add/{a}/{b}")
 def add_numbers(a: int, b: int):
     return {"result": a + b}
 
-@api.get('/genres')
+@app.get('/genres')
 def get_genres():
     query = "SELECT * FROM genres ORDER BY genreid;"
     try:    
@@ -42,7 +42,7 @@ def get_genres():
         return None
     cur.close()
 
-@api.get('/songs')
+@app.get('/songs')
 def get_songs():
     query = """
     SELECT 
